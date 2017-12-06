@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+package grpczip;
+
+message File {
+    string Filename = 1;
+    bytes Data = 2;
+}
+
+message Request {
+    string ZipFilename = 1;
+    repeated File Files = 2;
+}
+
+message Response {
+    File ZipFile = 1;
+}
+
+service Grpczip {
+    rpc Grpczip (Request) returns (Response) {}
+}
